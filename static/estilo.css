@@ -1,0 +1,182 @@
+/* Estilo general de la página: fondo oscuro, tipografía y centrado */
+body {
+    background: radial-gradient(circle at top, #1e1e24 0%, #121214 100%);
+    color: #f1f1f1;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Contenedor del título principal de la aplicación */
+.header-container {
+    text-align: center;
+    margin-bottom: 35px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+h1 {
+    color: #c4d71e;
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    letter-spacing: -1px;
+    text-shadow: 0 0 25px rgba(203, 215, 30, 0.3);
+}
+
+.subtitle {
+    color: #8b8b9e;
+    font-size: 1.05rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Tarjeta principal con efecto translúcido que envuelve el formulario de búsqueda */
+.search-card {
+    background: rgba(24, 24, 27, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    justify-content: center;
+    animation: slideUp 0.6s ease-out;
+}
+
+form {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+input[type="text"] {
+    padding: 15px 20px;
+    flex: 1;
+    background-color: #09090b;
+    border: 2px solid #27272a;
+    color: white;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #bbd71e;
+    box-shadow: 0 0 15px rgba(166, 215, 30, 0.25);
+}
+
+button {
+    padding: 15px 28px;
+    background: linear-gradient(135deg, #c4d71e 0%, #929b16 100%);
+    border: none;
+    color: #000000;
+    font-weight: 800;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 215, 30, 0.4);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(187, 215, 30, 0.6);
+}
+
+/* Contenedor general que agrupa la lista de canciones o estados */
+.tracks-container {
+    width: 100%;
+    max-width: 700px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Tarjeta individual para cada canción listada en los resultados */
+.track-card {
+    background: rgba(24, 24, 27, 0.6);
+    backdrop-filter: blur(8px);
+    padding: 20px 25px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 6px solid #c4d71e;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.track-card:hover {
+    background: rgba(36, 36, 42, 0.8);
+    transform: translateX(6px);
+    border-color: rgba(203, 215, 30, 0.3);
+}
+
+.track-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 19px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.track-info p {
+    margin: 0;
+    color: #a1a1aa;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Reproductor de audio integrado para las vistas previas */
+audio {
+    height: 38px;
+    width: 200px;
+    border-radius: 20px;
+    outline: none;
+}
+
+/* Cuadro de bienvenida inicial cuando la pantalla está vacía */
+.empty-state {
+    text-align: center;
+    color: #71717a;
+    background: rgba(24, 24, 27, 0.4);
+    padding: 50px 30px;
+    border-radius: 18px;
+    border: 2px dashed #27272a;
+}
+
+.empty-state span {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* Cuadro de aviso cuando una búsqueda no arroja resultados */
+.no-results {
+    color: #f43f5e;
+    text-align: center;
+    font-size: 16px;
+    background: rgba(24, 24, 27, 0.6);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(244, 63, 94, 0.2);
+}
+
+/* Animaciones visuales globales */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

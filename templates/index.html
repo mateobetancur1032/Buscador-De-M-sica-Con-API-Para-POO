@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Música MJS</title>
+    <!-- Enlace al archivo CSS usando la función url_for de Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+
+    <div class="header-container">
+        <h1>🎵 Buscador Musical MJS</h1>
+        <p>Encuentra tu música favorita y escucha vistas previas de tus canciones favoritas para parcharse a programar tranquilo y concentrado</p>
+    </div>
+    
+    <div class="search-card">
+        <!-- El formulario envía los datos mediante el método POST hacia la ruta principal de Flask -->
+        <form method="POST">
+            <input type="text" name="query" value="{{ query }}" placeholder="Busca un artista, álbum o canción..." required>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+    <div class="tracks-container">
+        <!-- Verifica si la variable 'tracks' tiene canciones encontradas -->
+        {% if tracks %}
+        <!--Recorre cada objeto de canción recibido desde Python -->
+            {% for track in tracks %}
+                <div class="track-card">
+                    <div class="track-info">
+                        <h3>{{ track.title }}</h3>
+                        <p>🎤 {{ track.artist }} &nbsp;|&nbsp; 💿 {{ track.album }} &nbsp;|&nbsp; ⏱️ {{ track.duration }}</p>
+                    </div>
+                    {% if track.preview %}
+                        <audio controls>
+                            <source src="{{ track.preview }}" type="audio/mpeg">
+                            Tu navegador no soporta audio.
+                        </audio>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% elif query %}
+            <p class="no-results">No se encontraron resultados para "{{ query }}".</p>
+        {% else %}
+            <div class="empty-state">
+                <span>🎧</span>
+                <p>Escribe el nombre de tu artista favorito arriba para empezar a explorar canciones y escuchar sus vistas previas y poder programar parchado.</p>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
